@@ -2,8 +2,12 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class SliderDemo implements ChangeListener {
+public class SliderDemo implements ChangeListener, MouseListener {
 
     JFrame frame;
     JPanel panel;
@@ -31,6 +35,7 @@ public class SliderDemo implements ChangeListener {
 
     slider.setPaintLabels(true);
     slider.addChangeListener(this::stateChanged);
+    slider.addMouseListener(this);
 
     slider.setFont(new Font("MV Boli",Font.PLAIN,15));
     label.setFont(new Font("MV Boli",Font.PLAIN,25));
@@ -48,5 +53,33 @@ public class SliderDemo implements ChangeListener {
     @Override
     public void stateChanged(ChangeEvent e) {
         label.setText("°C = " + slider.getValue());
+    }
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 2){
+            slider.setValue(50);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
